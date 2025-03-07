@@ -3,11 +3,22 @@ package co.edu.escuelaing.edu.arep.secure;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collections;
+
 @SpringBootApplication
 public class SecureApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SecureApplication.class, args);
+
+		SpringApplication app = new SpringApplication(SecureApplication.class);
+		app.setDefaultProperties(Collections.singletonMap("server.port", getPort()));
+		app.run(args);
+	}
+	static int getPort() {
+		if (System.getenv("PORT") != null) {
+			return Integer.parseInt(System.getenv("PORT"));
+		}
+		return 5000; //returns default port if heroku-port isn't set (i.e. on localhost)
 	}
 
 }

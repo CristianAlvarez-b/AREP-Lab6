@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/")
 public class HelloController {
     @GetMapping
     public String hello(){
-        return "Hello World!";
+        return "Hello Welcome To SpringBoot";
     }
 }
